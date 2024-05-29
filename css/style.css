@@ -1,0 +1,190 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+header {
+    background-color: #333;
+    padding: 10px 0;
+    color: white;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    height: 10vh;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img {
+    max-width: 200px;
+    padding: 10px 20px;
+}
+
+nav {
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a,
+.profile-button {
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+main {
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    /* Ensure main content is above the background */
+}
+
+.profile {
+    display: none;
+    background-color: #333;
+    padding: 20px;
+    position: fixed;
+    /* Change to fixed for sticky behavior */
+    top: 10vh;
+    /* Position below the header */
+    left: 0;
+    width: calc(100% - 40px); /* Adjust width */
+    height: auto;
+    /* Adjust height as needed */
+    max-height: calc(100vh - 10vh);
+    /* Full height minus header */
+    overflow-y: auto;
+    /* Add scroll for content */
+    z-index: 1000;
+    /* Ensure it's above main content */
+    transition: transform 1s ease-out;
+    transform: translateY(-100%);
+    /* Hide above the viewport initially */
+}
+
+.profile.active {
+    display: block;
+    transform: translateY(0);
+    /* Slide down into view */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Adjust right position */
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 1001;
+    /* Ensure the close button is above the profile content */
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Ensure footer is above main content */
+    left: 0;
+    /* Ensure it is aligned to the left */
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    /* Horizontal and vertical gaps */
+}
+
+.grid a {
+    width: calc(33.333% - 5px);
+    /* Adjust width to account for the gap */
+    box-sizing: border-box;
+}
+
+.grid img {
+    width: 100%;
+    display: block;
+    border: 3px solid #333;
+    margin: 0;
+    /* Ensure no additional margin */
+}
+
+
+@media (max-width: 600px) {
+
+    
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li a,
+    .profile-button {
+        width: 50%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    nav ul li a,
+    .profile-button {
+        width: 100%;
+    }
+
+    .grid a {
+        width: 100%;
+        /* Adjust for single column layout on mobile */
+    }
+
+    .profile {
+        top: auto;
+        /* Reset top for mobile */
+        bottom: 0;
+        /* Stick to the bottom */
+        height: 50vh;
+        /* Adjust height for mobile */
+        transform: translateY(100%);
+        /* Hide below the viewport initially */
+        width: calc(100% - 40px); /* Adjust width for mobile */
+    }
+
+    .profile.active {
+        transform: translateY(0);
+        /* Slide up into view */
+    }
+
+    .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px; /* Adjust right position */
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 1001;
+        /* Ensure the close button is above the profile content */
+    }    
+}
